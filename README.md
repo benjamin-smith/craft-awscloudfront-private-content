@@ -14,7 +14,7 @@ You can limit access to static assets via,
 ## Requirements
 
 * PHP 5.5+
-* an AWS CloudFront distribution, configured to server private content
+* an AWS CloudFront distribution, configured to serve private content
 * CloudFront Key Pair private key file ([AWS docs](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-trusted-signers.html))
 
 ## Installation
@@ -35,7 +35,7 @@ composer require benjamin-smith/craftcms-awscloudfront-private-content
 
 3) Install plugin in the Craft Control Panel under Settings > Plugins
 
-## Configuring AWS CloudFront
+## Configuring
 
 Create a config file in `craft/config/awscloudfront.php` with the following settings:
 
@@ -50,7 +50,7 @@ return [
 
 Then create a sample "policy" in the plugin settings menu. You can configure the expiration time and whether or not to restrict access to URLs based on IP address. You can have multiple policies, and choose which to use with each URL that is generated.
 
-## Using AWS CloudFront
+## Using
 
 This plugin creates a signed URL from a non-signed CloudFront URL. For example, if your resource is:
 
@@ -68,7 +68,7 @@ Or, you can generate a signed URL from a custom plugin:
 craft()->awsCloudfront_privateResource->getPrivateUrl('path/to/content', 'yourPolicyHandle');
 ```
 
-## AWS CloudFront Roadmap
+## Roadmap
 
 * tighter integration with Craft Assets
 * ability to configure multiple CloudFront distributions
