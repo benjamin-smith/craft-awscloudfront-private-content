@@ -1,0 +1,21 @@
+{
+    "name": "benjamin-smith/craftcms-awscloudfront-private-content",
+    "description": "Create CloudFront signed URLs on the fly to protect your assets.",
+    "type": "craft-plugin",
+    "authors": [
+        {
+            "name": "Benjamin Smith",
+            "homepage": "https://www.benjaminsmith.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "composer/installers": "~1.0",
+        "aws/aws-sdk-php": "^3.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "AwsCloudfront\\Utilities\\": "utilities/"
+        }
+    }
+}

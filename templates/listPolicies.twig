@@ -1,0 +1,57 @@
+{% extends '_layouts/cp' %}
+
+{% set title = 'AWS CloudFront Signed URL Policies'|t %}
+
+{% block content %}
+
+{% if not keyFileExists %}
+<p>
+    <h2>{{ "Priate key file is missing!"|t }}</h2>
+    {{ "Be sure to place the file at the following path:"|t }} <code>{{ keyFilePath }}</code>
+    <hr>
+</p>
+{% endif %}
+
+
+<p id="nopolicies"{% if policies|length %} class="hidden"{% endif %}>
+    {{ "No policies exist yet."|t }}
+</p>
+
+{% if policies|length %}
+    <table id="policies" class="data fullwidth collapsible">
+        <thead>
+            <th scope="col">{{ "Name"|t }}</th>
+            <th scope="col">{{ "Handle"|t }}</th>
+            <th scope="col">{{ "Expires (seconds)"|t }}</th>
+            <th scope="col">{{ "Restrict to user's IP?"|t }}</th>
+            <td class="thin"></td>
+        </thead>
+        <tbody>
+        {% for policy in policies %}
+            <tr data-id="{{ policy.id }}" data-name="{{ policy.name|t }}">
+                <th scope="row" data-title="{{ 'Name'|t }}"><a href="{{ url('awscloudfront/policy/' ~ policy.id) }}">{{ policy.name|t }}</a></th>
+                <td data-title="{{ 'Handle'|t }}"><code>{{ policy.handle }}</code></td>
+                <td data-title="{{ 'Expires (seconds)'|t }}">{{ policy.expires }}</td>
+                <td data-title="{{ 'Restrict to user\'s IP?'|t }}">{{ policy.restrictByIp }}</td>
+                <td class="thin"><a class="delete icon" title="{{ 'Delete'|t }}" role="button"></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+<div class="buttons">
+    <a class="btn submit add icon" href="{{ url('awscloudfront/policy/new') }}">{{ "New policy"|t }}</a>
+</div>
+
+{% endblock %}
+
+{% includejs %}
+    new Craft.AdminTable({
+        tableSelector: '#policies',
+        noObjectsSelector: '#nopolicies',
+        sortable: false,
+        deleteAction: 'awsCloudfront/deletePolicy'
+    });
+{% endincludejs %}
+

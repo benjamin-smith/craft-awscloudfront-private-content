@@ -1,0 +1,73 @@
+{% extends "_layouts/cp" %}
+
+{% import "_includes/forms" as forms %}
+
+{% set crumbs = [
+    { label: "AWS Cloudfront Signed URL Policies"|t, url: url('awscloudfront/policies') }
+] %}
+
+{% set fullPageForm = true %}
+
+
+{% set isNew = (policy is not defined or not policy.id) %}
+
+
+{% if isNew %}
+    {% set title = "Create a new policy"|t %}
+{% else %}
+    {% set title = policy.name|t %}
+{% endif %}
+
+
+{% block content %}
+
+    <input type="hidden" name="action" value="awsCloudfront/savePolicy">
+    <input type="hidden" name="redirect" value="awsCloudfront">
+
+    {% if not isNew %}<input type="hidden" name="id" value="{{ policy.id }}">{% endif %}
+
+    {{ forms.textField({
+        first: true,
+        label: "Name"|t,
+        id: 'name',
+        name: 'name',
+        value: (policy is defined ? policy.name : null),
+        errors: (policy is defined ? policy.getErrors('name') : null),
+        autofocus: true,
+        required: true,
+        translatable: true
+    }) }}
+
+    {{ forms.textField({
+        label: "Handle"|t,
+        id: "handle",
+        name: "handle",
+        value: (policy is defined ? policy.handle : null),
+        errors: (policy is defined ? policy.getErrors('handle') : null),
+        required: true,
+        translatable: true
+    }) }}
+
+    {{ forms.textField({
+        label: "Expires (seconds)"|t,
+        id: "expires",
+        name: "expires",
+        size: 5,
+        value: (policy is defined ? policy.expires : null),
+        errors: (policy is defined ? policy.getErrors('expires') : null),
+        required: true,
+        translatable: true
+    }) }}
+
+    {{ forms.lightswitchField({
+        label: "Restrict access to user's IP address?"|t,
+        name: 'restrictByIp',
+        on:   policy.restrictByIp,
+        toggle: "url-field"
+    }) }}
+
+{% endblock %}
+
+{% includejs %}
+    {% if policy is not defined or not policy.handle %}new Craft.HandleGenerator('#name', '#handle');{% endif %}
+{% endincludejs %}
