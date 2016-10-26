@@ -1,10 +1,18 @@
 [
     {
         "version": "0.1.0",
-        "downloadUrl": "https://github.com/benjamin-smith/craft-awscloudfront-private-content/archive/master.zip",
+        "downloadUrl": "https://github.com/benjamin-smith/craft-awscloudfront-private-content/archive/v0.1.0.zip",
         "date": "2016-09-06T01:20:32+00:00",
         "notes": [
             "[Added] Initial release"
+        ]
+    },
+    {
+        "version": "1.0.0",
+        "downloadUrl": "https://github.com/benjamin-smith/craft-awscloudfront-private-content/archive/v1.0.0.zip",
+        "date": "2016-10-26T11:00:00-11:00",
+        "notes": [
+            "[Added] Stable release"
         ]
     }
 ]
