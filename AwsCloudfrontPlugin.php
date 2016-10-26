@@ -21,12 +21,12 @@ class AwsCloudfrontPlugin extends BasePlugin
 
     public function getDocumentationUrl()
     {
-        return 'https://github.com/benjamin-smith/craftcms-awscloudfront-private-content/blob/master/README.md';
+        return 'https://github.com/benjamin-smith/craft-awscloudfront-private-content/blob/master/README.md';
     }
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/benjamin-smith/craftcms-awscloudfront-private-content/master/releases.json';
+        return 'https://raw.githubusercontent.com/benjamin-smith/craft-awscloudfront-private-content/master/releases.json';
     }
 
     public function getVersion()

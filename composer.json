@@ -1,5 +1,5 @@
 {
-    "name": "benjamin-smith/craftcms-awscloudfront-private-content",
+    "name": "benjamin-smith/craft-awscloudfront-private-content",
     "description": "Create CloudFront signed URLs on the fly to protect your assets.",
     "type": "craft-plugin",
     "authors": [

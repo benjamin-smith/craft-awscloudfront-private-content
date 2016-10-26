@@ -24,12 +24,12 @@ To install, follow these steps:
 1) Install with Composer (recommended)
 
 ```
-composer require benjamin-smith/craftcms-awscloudfront-private-content
+composer require benjamin-smith/craft-awscloudfront-private-content
 ```
 
 -OR- download & unzip the file and place the `awscloudfront` directory into your `craft/plugins` directory
 
--OR- do a `git clone https://github.com/benjamin-smith/craftcms-awscloudfront-private-content.git` directly into your `craft/plugins` folder.  You can then update it with `git pull`
+-OR- do a `git clone https://github.com/benjamin-smith/craft-awscloudfront-private-content.git` directly into your `craft/plugins` folder.  You can then update it with `git pull`
 
 2) Place your CloudFront Key Pair private key in `craft/storage/awscloudfront/cloudfront.pem`.
 
